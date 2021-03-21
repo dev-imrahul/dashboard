@@ -1,0 +1,8 @@
+@mixin img-radius {
+  border-radius: 50%;
+}
+@mixin  d-flex {
+  display: flex;
+  justify-content: center;
+   align-items: center;
+}

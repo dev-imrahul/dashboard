@@ -1,0 +1,211 @@
+// Bootstrap 
+@import "node_modules/bootstrap/scss/bootstrap";
+// Color variable
+@import "./_partial/color";
+// Font
+@import "./_partial/fonts";
+// Variable
+@import "./_partial/variable";
+// Mixins
+@import './_partial/mixins';
+
+
+@each $color,
+$value in $colors {
+  .clr-#{$color} {
+    color: #{$value}
+  }
+
+  ;
+
+  .bg_#{$color} {
+    background-color : #{$value}
+  }
+
+  ;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: $body-font !important;
+  font-weight: 400;
+  line-height: 1.7;
+  font-size: 1.6rem;
+  color: #777;
+  background-color: #fcfcfc;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $heading-font;
+}
+
+// Custome CSS
+
+.conatinerMain {
+  width: 100%;
+  display: flex;
+
+  &--left {
+    width: $leftBar;
+    background-color: color(primary);
+    height: 100vh;
+    border-radius: 0 $navRadius $navRadius 0;
+    position: relative;
+    z-index: 1;
+
+    &.navToggle {
+
+      transition: all .3s ease-in-out;
+    }
+
+    & .logo-container a {
+      padding: $nav-padding 0;
+      width: 100%;
+      @include d-flex;
+      border-bottom: 1px solid color(secondary-dark);
+
+      & img {
+
+        height: $icon-height;
+      }
+    }
+
+    &.navToggle {
+      display: none;
+      animation: animate 5s 1;
+    }
+
+    @keyframes animate {
+      0% {
+        transform: translateX(0%);
+      }
+
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+  }
+
+  &--right {
+    width: 100%;
+    height: 100vh;
+
+    & nav {
+      background-color: color(white);
+      width: calc(100% + #{$navRadius});
+      margin-left: -$navRadius;
+      // padding-left: $navRadius;
+      box-shadow: $primary-boxShadow;
+      padding: $nav-padding 0 $nav-padding $navRadius;
+
+      & .hamburgerContainer {
+        padding-left: 15px;
+
+        & .btn {
+          &:focus {
+            box-shadow: 0 0 0;
+          }
+
+          & span {
+            height: 1.5px;
+            border-radius: 5px;
+            background-color: color(primary);
+            display: block;
+            margin: 7px 0;
+
+            &:nth-child(1) {
+              width: $hamburgerIconWidth1;
+              margin-left: calc(#{$hamburgerIconWidth2} - #{$hamburgerIconWidth1});
+            }
+
+            &:nth-child(2) {
+              width: $hamburgerIconWidth2;
+            }
+
+            &:nth-child(3) {
+              width: $hamburgerIconWidth1;
+            }
+          }
+        }
+
+        .addbtn {
+          & span {
+
+            &:nth-child(1) {
+              width: $hamburgerIconWidth2 !important;
+              margin: 0 !important;
+              transform: rotate(45deg);
+            }
+
+            &:nth-child(2) {
+              width: $hamburgerIconWidth2 !important;
+              display: none !important;
+            }
+
+            &:nth-child(3) {
+              width: $hamburgerIconWidth2 !important;
+              transform: rotate(-45deg);
+              margin: 0 !important;
+            }
+          }
+        }
+      }
+
+      & .navItems-container {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+
+        & .material-icons {
+          color: color(primary);
+        }
+
+        &--profile {
+          margin-left: 15px;
+
+          & img {
+            width: $icon-height;
+            height: $icon-height;
+            @include img-radius;
+          }
+
+          &__name {
+            font-size: medium;
+            margin-left: 8px;
+            font-family: $body-font;
+          }
+        }
+      }
+    }
+
+    & .right-mainContaine {
+      background-color: #fff;
+      border-radius: $baseRadius;
+      padding: $base-padding 10px;
+      margin: 15px;
+    }
+
+  }
+
+  .btn {
+    &:focus {
+      box-shadow: 0 0 0;
+    }
+
+    padding: 0;
+  }
+}
